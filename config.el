@@ -35,6 +35,8 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; projectile
+(setq projectile-project-search-path '("~/Code/"))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -53,6 +55,11 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq
- fancy-splash-image "~/.doom.d/emacs.png"
- projectile-project-search-path '("~/Code/"))
+(setq fancy-splash-image "~/.doom.d/emacs.png")
+
+;; Python configuration
+(use-package! poetry)
+
+(use-package! elpy
+  :init
+  (elpy-enable))

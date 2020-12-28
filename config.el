@@ -14,8 +14,7 @@
       org-log-done 'time
       org-roam-directory "~/Documents/org/roam")
 
-(use-package! org-roam
-  :config
+(after! org-roam
   (setq org-roam-capture-templates
         '(("d" "default" plain
            (function org-roam--capture-get-point)

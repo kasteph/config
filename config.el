@@ -2,11 +2,13 @@
 
 (setq user-full-name "Steph Samson"
       user-mail-address "hello@stephsamson.com"
+      auto-fill-function 'do-auto-fill
       display-line-numbers-type t
-      doom-font (font-spec :family "JetBrains Mono" :size 14 :weight 'semi-light)
+      doom-font (font-spec :family "JetBrains Mono" :size 15 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "sans" :size 15)
       doom-theme 'doom-nord-light
-      fancy-splash-image "~/.doom.d/emacs.png")
+      fancy-splash-image "~/.doom.d/emacs.png"
+      fill-column 79)
 
 ;; org and family
 ;;
@@ -20,7 +22,8 @@
            (function org-roam--capture-get-point)
            "%?"
            :file-name "${slug}"
-           :head "#+title: ${title}\n"
+           :head "#+title: ${title}\n
++STARTUP:latexpreview"
            :immediate-finish t
            :unnarrowed t)
           ("p" "private" plain
@@ -55,7 +58,7 @@
            :file-name "lit/${slug}"
            :head ,(concat
                    "#+title: ${title}\n"
-                   "#+roam_key: ${citekey}\n\n"
+                   "#+roam_key: cite:${citekey}\n\n"
                    "* ${title}\n"
                    "  :PROPERTIES:\n"
                    "  :AUTHOR: ${author}\n"
@@ -68,7 +71,8 @@
   :config
   (setq bibtex-completion-notes-path "~/Documents/org/"
         bibtex-completion-bibliography "~/Documents/org/biblio.bib"
-        bibtex-completion-library-path "~/Documents/pdfs/"
+        bibtex-completion-library-path "~/Documents/pdfs"
+        bibtex-completion-pdf-field "file"
         bibtex-completion-notes-template-multiple-files
          (concat
           "#+title: ${title}\n"
@@ -89,9 +93,9 @@
 (use-package! org-roam-server)
 
 (use-package! org-ref
-  :after org)
-
-(after! org-ref
+  :after org
+  :config
+  (setq org-ref-pdf-directory "~/Documents/pdfs")
   (setq org-ref-default-bibliography `,(list (concat org-directory "biblio.bib")))
   (setq org-ref-formatted-citation-formats
   '(("text"
@@ -125,6 +129,10 @@
            ("proceedings" . "${editor} (Eds.), _${booktitle}_ (${year}). ${address}: ${publisher}.")
            ("unpublished" . "${author}, *${title}* (${year}). Unpublished manuscript.")
            (nil . "${author}, *${title}* (${year}).")))))
+
+(setq org-latex-create-formula-image-program 'dvipng)
+
+(add-hook! 'org-mode-hook 'org-fragtog-mode)
 
 ;; projectile
 ;;

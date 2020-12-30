@@ -1,6 +1,7 @@
 (package! company-org-roam
   :recipe (:host github :repo "org-roam/company-org-roam"))
 (package! elpy)
+(package! org-download)
 (package! org-fragtog)
 (package! org-ref)
 (package! org-roam-bibtex

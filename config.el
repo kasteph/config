@@ -2,7 +2,6 @@
 
 (setq user-full-name "Steph Samson"
       user-mail-address "hello@stephsamson.com"
-      auto-fill-function 'do-auto-fill
       display-line-numbers-type t
       doom-font (font-spec :family "JetBrains Mono" :size 15 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "sans" :size 15)
@@ -53,7 +52,7 @@
   :config
   (setq orb-preformat-keywords '("citekey" "author" "date"))
   (setq orb-templates
-        `(("r" "ref" plain (function org-roam-capture--get-point)
+        '(("r" "ref" plain (function org-roam-capture--get-point)
            ""
            :file-name "lit/${slug}"
            :head ,(concat
@@ -133,6 +132,19 @@
 (setq org-latex-create-formula-image-program 'dvipng)
 
 (add-hook! 'org-mode-hook 'org-fragtog-mode)
+
+(use-package! org-download
+  :commands
+  org-download-clipboard
+  org-download-dnd
+  org-download-dnd-base64
+  org-download-yank
+  :init
+  (map! :map org-mode-map
+        "M-s Y" #'org-download-clipboard
+        "M-s y" #'org-download-yank)
+  :config
+  (setq org-download-image-dir "~/Pictures/org"))
 
 ;; projectile
 ;;

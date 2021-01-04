@@ -13,7 +13,8 @@
 ;;
 (setq org-directory "~/Documents/org/"
       org-log-done 'time
-      org-roam-directory "~/Documents/org/roam")
+      org-roam-directory "~/Documents/org/roam"
+      org-startup-with-inline-images t)
 
 (after! org-roam
   (setq org-roam-capture-templates
@@ -21,8 +22,7 @@
            (function org-roam--capture-get-point)
            "%?"
            :file-name "${slug}"
-           :head "#+title: ${title}\n
-+STARTUP:latexpreview"
+           :head "#+title: ${title}\n"
            :immediate-finish t
            :unnarrowed t)
           ("p" "private" plain
@@ -48,9 +48,8 @@
 (use-package! org-roam-bibtex
   :after (org-roam)
   :hook (org-roam-mode . org-roam-bibtex-mode)
-  :load-path "~/Documents/org/biblio.bib"
   :config
-  (setq orb-preformat-keywords '("citekey" "author" "date"))
+  (setq orb-preformat-keywords '("citekey" "author"))
   (setq orb-templates
         '(("r" "ref" plain (function org-roam-capture--get-point)
            ""
@@ -95,7 +94,8 @@
   :after org
   :config
   (setq org-ref-pdf-directory "~/Documents/pdfs")
-  (setq org-ref-default-bibliography `,(list (concat org-directory "biblio.bib")))
+  (setq org-ref-notes-function 'orb-edit-notes)
+  (setq org-ref-default-bibliography (list (concat org-directory "biblio.bib")))
   (setq org-ref-formatted-citation-formats
   '(("text"
            ("article" . "${author}, ${title}, ${journal}, ${volume}(${number}), ${pages} (${year}). ${doi}")
@@ -157,3 +157,9 @@
 (use-package! elpy
   :init
   (elpy-enable))
+
+;; gif screencasts
+;;
+(use-package! gif-screencast
+  :bind
+  ("<f12>" . gif-screencast-start-or-stop))

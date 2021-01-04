@@ -1,6 +1,10 @@
 (package! company-org-roam
   :recipe (:host github :repo "org-roam/company-org-roam"))
+(package! dockerfile-mode)
 (package! elpy)
+(package! emmet-mode)
+(package! gif-screencast
+  :recipe (:host gitlab :repo "ambrevar/emacs-gif-screencast"))
 (package! org-download)
 (package! org-fragtog)
 (package! org-ref)

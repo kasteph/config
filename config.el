@@ -49,9 +49,9 @@
   :after (org-roam)
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :config
-  (setq orb-preformat-keywords '("citekey" "author"))
+  (setq orb-preformat-keywords '("citekey" "author" "date"))
   (setq orb-templates
-        '(("r" "ref" plain (function org-roam-capture--get-point)
+        `(("r" "ref" plain (function org-roam-capture--get-point)
            ""
            :file-name "lit/${slug}"
            :head ,(concat
@@ -95,7 +95,7 @@
   :config
   (setq org-ref-pdf-directory "~/Documents/pdfs")
   (setq org-ref-notes-function 'orb-edit-notes)
-  (setq org-ref-default-bibliography (list (concat org-directory "biblio.bib")))
+  (setq org-ref-default-bibliography `,(list (concat org-directory "biblio.bib")))
   (setq org-ref-formatted-citation-formats
   '(("text"
            ("article" . "${author}, ${title}, ${journal}, ${volume}(${number}), ${pages} (${year}). ${doi}")

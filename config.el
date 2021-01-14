@@ -5,7 +5,7 @@
       display-line-numbers-type t
       doom-font (font-spec :family "JetBrains Mono" :size 15 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "sans" :size 15)
-      doom-theme 'doom-nord-light
+      doom-theme 'doom-one-light
       fancy-splash-image "~/.doom.d/emacs.png"
       fill-column 79)
 
@@ -60,7 +60,7 @@
                    "* ${title}\n"
                    "  :PROPERTIES:\n"
                    "  :AUTHOR: ${author}\n"
-                   "  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
+                   "  :NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")\n"
                    "  :NOTER_PAGE: \n"
                    "  :END:\n")
            :unnarrowed t))))
@@ -152,11 +152,11 @@
 
 ;; python configuration
 ;;
-(use-package! poetry)
-
 (use-package! elpy
   :init
-  (elpy-enable))
+  (elpy-enable)
+  :config
+  (setq elpy-rpc-virtualenv-path "~/.virtualenvs/emacs-PMobtaha-py3.9"))
 
 ;; gif screencasts
 ;;

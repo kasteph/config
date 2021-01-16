@@ -68,7 +68,7 @@
 (use-package! bibtex-completion
   :config
   (setq bibtex-completion-notes-path "~/Documents/org/"
-        bibtex-completion-bibliography "~/Documents/org/biblio.bib"
+        bibtex-completion-bibliography "~/Documents/org/zotero.bib"
         bibtex-completion-library-path "~/Documents/pdfs"
         bibtex-completion-pdf-field "file"
         bibtex-completion-notes-template-multiple-files
@@ -95,7 +95,7 @@
   :config
   (setq org-ref-pdf-directory "~/Documents/pdfs")
   (setq org-ref-notes-function 'orb-edit-notes)
-  (setq org-ref-default-bibliography `,(list (concat org-directory "biblio.bib")))
+  (setq org-ref-default-bibliography `,(list (concat org-directory "zotero.bib")))
   (setq org-ref-formatted-citation-formats
   '(("text"
            ("article" . "${author}, ${title}, ${journal}, ${volume}(${number}), ${pages} (${year}). ${doi}")

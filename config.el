@@ -163,3 +163,35 @@
 (use-package! gif-screencast
   :bind
   ("<f12>" . gif-screencast-start-or-stop))
+
+;; syncthing
+;;
+(use-package! emacs-conflict)
+
+;; treemacs-persp
+;; https://github.com/hlissner/doom-emacs/issues/1348#issuecomment-608083367
+;;
+(use-package! treemacs-persp
+  :when (featurep! :ui workspaces)
+  :after (treemacs persp-mode)
+  :config
+  (treemacs-set-scope-type 'Perspectives))
+
+(after! treemacs
+  (defun +treemacs--init ()
+    (require 'treemacs)
+    (let ((origin-buffer (current-buffer)))
+      (cl-letf (((symbol-function 'treemacs-workspace->is-empty?)
+                 (symbol-function 'ignore)))
+        (treemacs--init))
+      (unless (bound-and-true-p persp-mode)
+        (dolist (project (treemacs-workspace->projects (treemacs-current-workspace)))
+          (treemacs-do-remove-project-from-workspace project)))
+      (with-current-buffer origin-buffer
+        (let ((project-root (or (doom-project-root) default-directory)))
+          (treemacs-do-add-project-to-workspace
+           (treemacs--canonical-path project-root)
+           (doom-project-name project-root)))
+        (setq treemacs--ready-to-follow t)
+        (when (or treemacs-follow-after-init treemacs-follow-mode)
+          (treemacs--follow))))))

@@ -2,6 +2,8 @@
   :recipe (:host github :repo "org-roam/company-org-roam"))
 (package! dockerfile-mode)
 (package! elpy)
+(package! emacs-conflict
+  :recipe (:host github :repo "ibizaman/emacs-conflict"))
 (package! emmet-mode)
 (package! gif-screencast
   :recipe (:host gitlab :repo "ambrevar/emacs-gif-screencast"))
@@ -13,6 +15,7 @@
   :recipe (:host github :repo "org-roam/org-roam-bibtex"))
 (package! org-roam-server
   :recipe (:host github :repo "org-roam/org-roam-server"))
+(package! treemacs-persp)
 (package! yaml-mode)
 
 (unpin! org-roam)

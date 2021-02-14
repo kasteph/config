@@ -16,6 +16,8 @@
       org-roam-directory "~/Documents/org/roam"
       org-startup-with-inline-images t)
 
+;; org-roam
+;;
 (after! org-roam
   (setq org-roam-capture-templates
         '(("d" "default" plain
@@ -90,6 +92,8 @@
 
 (use-package! org-roam-server)
 
+;; org-ref
+;;
 (use-package! org-ref
   :after org
   :config
@@ -129,7 +133,14 @@
            ("unpublished" . "${author}, *${title}* (${year}). Unpublished manuscript.")
            (nil . "${author}, *${title}* (${year}).")))))
 
-(setq org-latex-create-formula-image-program 'dvipng)
+;; org-latex
+;;
+(after! org-latex
+  (setq org-latex-create-formula-image-program 'dvipng
+        org-latex-listings 'minted))
+(setq org-latex-pdf-process '("latexmk -pdf -pdflatex='xelatex -interaction=nonstopmode -shell-escape' %f")
+      org-latex-compiler "xelatex")
+(setq bibtex-dialect 'biblatex)
 
 (add-hook! 'org-mode-hook 'org-fragtog-mode)
 
@@ -157,6 +168,8 @@
   (elpy-enable)
   :config
   (setq elpy-rpc-virtualenv-path "~/.virtualenvs/emacs-PMobtaha-py3.9"))
+
+(setq pyimport-pyflakes-path "~/.virtualenvs/emacs-PMobtaha-py3.9/lib/python3.9/site-packages/pyflakes")
 
 ;; gif screencasts
 ;;
@@ -195,3 +208,20 @@
         (setq treemacs--ready-to-follow t)
         (when (or treemacs-follow-after-init treemacs-follow-mode)
           (treemacs--follow))))))
+
+(defun my-indent-region (N)
+  (interactive "p")
+  (if (use-region-p)
+      (progn (indent-rigidly (region-beginning) (region-end) (* N 4))
+             (setq deactivate-mark nil))
+    (self-insert-command N)))
+
+(defun my-unindent-region (N)
+  (interactive "p")
+  (if (use-region-p)
+      (progn (indent-rigidly (region-beginning) (region-end) (* N -4))
+             (setq deactivate-mark nil))
+    (self-insert-command N)))
+
+(global-set-key ">" 'my-indent-region)
+(global-set-key "<" 'my-unindent-region)

@@ -1,0 +1,12 @@
+# Exclude everything
+/*
+
+# Include files
+!*.gitignore
+!*.gitconfig
+
+# Include dirs
+!.doom.d
+!alacritty
+!fontconfig
+!rofi

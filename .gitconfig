@@ -1,0 +1,18 @@
+[user]
+    name     = Steph Samson
+    email    = hello@stephsamson.com
+    username = stephsamson
+
+[core]
+    editor   = emacs
+
+[alias]
+    st = status
+    br = branch
+    co = checkout
+    mr = merge
+    rb = rebase
+    ph = push
+    fh = fetch
+    pl = pull
+    cm = commit

@@ -14,10 +14,10 @@ configuration {
 	lines: 6;
 	/*columns: 2;*/
 
-    display-ssh:    "";
+    display-ssh:    "💻";
     display-run:    "";
     display-drun:   "";
-    display-window: "🖵";
+    display-window: "🪟";
     display-combi:  "";
     show-icons:     true;
 }

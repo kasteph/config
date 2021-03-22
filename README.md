@@ -16,7 +16,7 @@ Clone into `~/.config`: `git clone git@github.com:stephsamson/config.git ~/.conf
 From `$HOME`:
 
 ``` sh
-$ ln -Ts ~/.config/.$.doom/ .
+$ ln -Ts ~/.config/.doom.d/ .
 $ ln -s ~/.config/.gitconfig .
 $ ln -s ~/.config/.bash* .
 ```

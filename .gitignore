@@ -7,6 +7,7 @@
 !*.bash_profile
 !*.gitignore
 !*.gitconfig
+!*.tmux.conf
 
 # Include dirs
 !.doom.d

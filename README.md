@@ -10,6 +10,7 @@ Clone into `~/.config`: `git clone git@github.com:stephsamson/config.git ~/.conf
 * alacritty
 * poetry
 * pyenv
+* tmux
 
 ## Symlinks
 
@@ -19,5 +20,6 @@ From `$HOME`:
 $ ln -Ts ~/.config/.$.doom/ .
 $ ln -s ~/.config/.gitconfig .
 $ ln -s ~/.config/.bash* .
+$ ln -s ~/.config/.tmux.conf .
 ```
 

@@ -175,9 +175,9 @@
   :init
   (elpy-enable)
   :config
-  (setq elpy-rpc-virtualenv-path "~/.virtualenvs/emacs-PMobtaha-py3.9"))
+  (setq elpy-rpc-virtualenv-path "~/.virtualenvs/emacs"))
 
-(setq pyimport-pyflakes-path "~/.virtualenvs/emacs-PMobtaha-py3.9/lib/python3.9/site-packages/pyflakes")
+(setq pyimport-pyflakes-path "~/.virtualenvs/emacs/lib/python3.9/site-packages/pyflakes")
 
 ;; gif screencasts
 ;;

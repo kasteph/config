@@ -170,15 +170,13 @@ export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
 export GOMODCACHE="$GOPATH/pkg/mod"
 
-# Enable shims and autocompletion
-eval "$(pyenv init -)"
-
 alias doom="$HOME/.emacs.d/bin/doom"
 
 # for completion: source <(kubectl completion bash | sed s/kubectl/k/g)
 alias k="kubectl"
 
 export PATH="$HOME/.poetry/bin:$HOME/.local/bin:$PYENV_ROOT/bin:$PATH:$GOBIN"
+
 
 #------------------------------------------------------------
 
@@ -188,3 +186,10 @@ export PATH="$HOME/.poetry/bin:$HOME/.local/bin:$PYENV_ROOT/bin:$PATH:$GOBIN"
 
 # alias ef='_open_files_for_editing'     # 'ef' opens given file(s) for editing
 ################################################################################
+
+# Enable shims and autocompletion
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+source <(kubectl completion bash | sed s/kubectl/k/g)

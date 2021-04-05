@@ -41,7 +41,7 @@ configuration {
     backlight: #ccffeedd;
     background-color:  transparent;
     
-    highlight:     underline bold #b4637a;
+    highlight:     underline bold #ea9d34;
 
     transparent: rgba(46,52,64,0);
 }
@@ -111,8 +111,8 @@ element {
 }
 
 element selected.normal {
-	background-color: @gold;
-	text-color: @surface;
+	background-color: @pine;
+	text-color: @overlay;
 }
 
 button {

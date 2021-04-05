@@ -23,7 +23,10 @@
       org-roam-directory "~/Documents/org/roam"
       org-startup-with-inline-images t)
 
-;; org-roam
+(after! org
+  (setq org-agenda-files '("~/Documents/org/")))
+
+;; roam-org
 ;;
 (after! org-roam
   (setq org-roam-capture-templates
@@ -148,10 +151,24 @@
 (setq org-latex-pdf-process '("latexmk -pdf -pdflatex='xelatex -interaction=nonstopmode -shell-escape' %f")
       org-latex-compiler "xelatex"
       org-latex-caption-above nil)
+(add-to-list 'org-latex-packages-alist '("" "fontspec" t))
+(add-to-list 'org-latex-packages-alist '("" "listings" t))
+(add-to-list 'org-latex-packages-alist '("" "xcolor" t))
+(add-to-list 'org-latex-packages-alist '("" "blindtext" t))
 (setq bibtex-dialect 'biblatex)
 
 (add-hook! 'org-mode-hook 'org-fragtog-mode)
 
+;; org-journal
+;;
+(setq org-journal-dir "~/Documents/org/journal"
+      org-journal-date-prefix "#+title: "
+      org-journal-time-prefix "* "
+      org-journal-file-format "%Y-%m-%d.org"
+      org-journal-date-format "%a, %Y-%m-%d")
+
+;; org-download
+;;
 (use-package! org-download
   :commands
   org-download-clipboard

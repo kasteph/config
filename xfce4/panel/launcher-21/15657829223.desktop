@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=System Monitor
+Comment=System Monitor - Tasks
+GenericName=System Monitor
+Exec=xfce4-taskmanager
+Icon=utilities-system-monitor
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=System;Utility;
+Path=

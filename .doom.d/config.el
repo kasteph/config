@@ -24,7 +24,7 @@
       org-startup-with-inline-images t)
 
 (after! org
-  (setq org-agenda-files '("~/Documents/org/")))
+  (setq org-agenda-files '("~/Documents/org/todo.org" "~/Documents/org/tasks.org")))
 
 ;; roam-org
 ;;

@@ -11,38 +11,53 @@
 (straight-use-package
  '(rose-pine-emacs
    :host github
-   :repo "stephsamson/rose-pine-emacs"
+   :repo "thongpv87/rose-pine-emacs"
    :branch "master"))
 
-(load-theme 'rose-pine-dawn t)
+(load-theme 'rose-pine-moon t)
+
+(exec-path-from-shell-initialize)
 
 ;; org and family
 ;;
 (setq org-directory "~/Documents/org/"
       org-log-done 'time
-      org-roam-directory "~/Documents/org/roam"
+      org-roam-directory (file-truename "~/Documents/org/roam/")
+      org-roam-db-gc-threshold most-positive-fixnum
       org-startup-with-inline-images t)
 
 (after! org
   (setq org-agenda-files '("~/Documents/org/todo.org" "~/Documents/org/tasks.org")))
 
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam
+    :config
+    (setq org-roam-ui-sync-theme t
+	  org-roam-ui-follow t
+	  org-roam-ui-update-on-save t
+	  org-roam-ui-open-on-start t))
+
+
 ;; roam-org
 ;;
-(after! org-roam
+(use-package! org-roam
+  :init
+  (setq org-roam-v2-ack t)
+  :config
+  (org-roam-setup)
   (setq org-roam-capture-templates
         '(("d" "default" plain
-           (function org-roam--capture-get-point)
            "%?"
-           :file-name "${slug}"
-           :head "#+title: ${title}\n"
+           :if-new (file+head "${slug}.org"
+                              "#+title: ${title}\n")
            :immediate-finish t
            :unnarrowed t)
-          ("p" "private" plain
-           (function org-roam-capture--get-point)
-           "%?"
-           :file-name "private/${slug}"
-           :head "#+title: ${title}\n"
-           :immediate-finish t
+          ("r" "bibliography reference" plain "%?"
+           :if-new
+           (file+head "references/${citekey}.org" "#+title: ${title}\n")
            :unnarrowed t)))
   (setq org-roam-capture-ref-templates
         '(("r" "ref" plain
@@ -99,8 +114,6 @@
           ":URL: ${url}\n"
           ":END:\n\n"
           )))
-
-(use-package! org-roam-server)
 
 ;; org-ref
 ;;
@@ -186,15 +199,9 @@
 ;;
 (setq projectile-project-search-path '("~/Code/" "~/Documents/"))
 
-;; python configuration
-;;
-(use-package! elpy
-  :init
-  (elpy-enable)
-  :config
-  (setq elpy-rpc-virtualenv-path "~/.virtualenvs/emacs"))
-
-(setq pyimport-pyflakes-path "~/.virtualenvs/emacs/lib/python3.9/site-packages/pyflakes")
+;; python
+(setq python-indent-guess-indent-offset nil
+      python-indent-offset 4)
 
 ;; gif screencasts
 ;;

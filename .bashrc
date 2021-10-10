@@ -159,37 +159,3 @@ _open_files_for_editing() {
     done
 }
 
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
-	    . /usr/share/bash-completion/bash_completion
-
-eval "$(starship init bash)"
-
-export PYENV_ROOT="$HOME/.pyenv"
-
-export GOPATH="$HOME/.go"
-export GOBIN="$GOPATH/bin"
-export GOMODCACHE="$GOPATH/pkg/mod"
-
-alias doom="$HOME/.emacs.d/bin/doom"
-
-# for completion: source <(kubectl completion bash | sed s/kubectl/k/g)
-alias k="kubectl"
-
-export PATH="$HOME/.poetry/bin:$HOME/.local/bin:$PYENV_ROOT/bin:$PATH:$GOBIN"
-
-
-#------------------------------------------------------------
-
-## Aliases for the functions above.
-## Uncomment an alias if you want to use it.
-##
-
-# alias ef='_open_files_for_editing'     # 'ef' opens given file(s) for editing
-################################################################################
-
-# Enable shims and autocompletion
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-source <(kubectl completion bash | sed s/kubectl/k/g)

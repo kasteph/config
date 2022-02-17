@@ -4,8 +4,6 @@
 # Include files
 !pypoetry
 !README.md
-!*.bashrc
-!*.bash_profile
 !*.gitignore
 !*.gitconfig
 !*.tmux.conf

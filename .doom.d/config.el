@@ -3,18 +3,19 @@
 (setq user-full-name "Steph Samson"
       user-mail-address "hello@stephsamson.com"
       display-line-numbers-type t
+      doom-theme 'doom-ayu-light
       doom-font (font-spec :family "JetBrains Mono" :size 15 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "sans" :size 15)
       fill-column 79)
 
-(use-package! autothemer)
-(straight-use-package
- '(rose-pine-emacs
-   :host github
-   :repo "thongpv87/rose-pine-emacs"
-   :branch "master"))
+;; (use-package! autothemer)
+;; (straight-use-package
+;;  '(rose-pine-emacs
+;;    :host github
+;;    :repo "thongpv87/rose-pine-emacs"
+;;    :branch "master"))
 
-(load-theme 'rose-pine-moon t)
+;; (load-theme 'rose-pine-moon t)
 
 (exec-path-from-shell-initialize)
 

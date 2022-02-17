@@ -11,37 +11,66 @@ font:
     family: JetBrains Mono
     style: italic
 
-colors:
-  primary:
-    background: '0xfffaf3'
-    foreground: '0x575279'
-  cursor:
-    text: '0xfaf4ed'
-    cursor: '0xECC5BF'
-  vi_mode_cursor:
-    text: '0xfaf4ed'
-    cursor: '0xECC5BF'
-  line_indicator:
-    foreground: None
-    background: None
-  selection:
-    text: CellForeground
-    background: '0xF5E2DF'
-  normal:
-    black:   '0x6e6a86'
-    red:     '0xb4637a'
-    green:   '0x56949f'
-    yellow:  '0xea9d34'
-    blue:    '0x286983'
-    magenta: '0x907aa9'
-    cyan:    '0xd7827e'
-    white:   '0x575279'
-  bright:
-    black:   '0x6e6a86'
-    red:     '0xeb6f92'
-    green:   '0x9ccfd8'
-    yellow:  '0xf6c177'
-    blue:    '0x31748f'
-    magenta: '0xc4a7e7'
-    cyan:    '0xebbcba'
-    white:   '0xe0def4'
+schemes:
+  ayu-light: &ayu-light
+    primary:
+      background: '0xfafafa'
+      foreground: '0x5b6672'
+
+    # Normal colors
+    normal:
+      black: '0x000000' #0
+      red: '0xf2590b' #1
+      green: '0x76cc00' #2
+      yellow: '0xf29717' #3
+      blue: '0x41a5d9' #4
+      magenta: '0x9965cc' #5
+      cyan: '0x4dbf98' #6
+      white: '0xc7c7c7' #7
+
+    # Bright colors
+    bright:
+      black: '0x676767'
+      red: '0xd6646a' #9
+      green: '0xa3d900' #10
+      yellow: '0xe7c446' #11
+      blue: '0x6871ff' #12
+      magenta: '0xa37acc' #13
+      cyan: '0x56d9ad' #14
+      white: '0xfeffff' #15
+
+
+colors: *ayu-light
+  # primary:
+  #   background: '0xfffaf3'
+  #   foreground: '0x575279'
+  # cursor:
+  #   text: '0xfaf4ed'
+  #   cursor: '0xECC5BF'
+  # vi_mode_cursor:
+  #   text: '0xfaf4ed'
+  #   cursor: '0xECC5BF'
+  # line_indicator:
+  #   foreground: None
+  #   background: None
+  # selection:
+  #   text: CellForeground
+  #   background: '0xF5E2DF'
+  # normal:
+  #   black:   '0x6e6a86'
+  #   red:     '0xb4637a'
+  #   green:   '0x56949f'
+  #   yellow:  '0xea9d34'
+  #   blue:    '0x286983'
+  #   magenta: '0x907aa9'
+  #   cyan:    '0xd7827e'
+  #   white:   '0x575279'
+  # bright:
+  #   black:   '0x6e6a86'
+  #   red:     '0xeb6f92'
+  #   green:   '0x9ccfd8'
+  #   yellow:  '0xf6c177'
+  #   blue:    '0x31748f'
+  #   magenta: '0xc4a7e7'
+  #   cyan:    '0xebbcba'
+  #   white:   '0xe0def4'

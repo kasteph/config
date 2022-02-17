@@ -9,6 +9,7 @@
 !*.gitignore
 !*.gitconfig
 !*.tmux.conf
+!*.zshrc
 
 # Include dirs
 !.doom.d

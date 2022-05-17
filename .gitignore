@@ -4,6 +4,7 @@
 # Include files
 !pypoetry
 !README.md
+!starship.toml
 !*.gitignore
 !*.gitconfig
 !*.tmux.conf

@@ -1,0 +1,10 @@
+[hostname]
+format = "@[$hostname](bold dimmed blue) in "
+ssh_only = false
+disabled = false
+
+[username]
+format = "[$user]($style)"
+style_user = "bold dimmed green"
+show_always = true
+disabled = false

@@ -16,3 +16,5 @@
     fh = fetch
     pl = pull
     cm = commit
+[commit]
+	gpgsign = true

@@ -9,6 +9,7 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
+fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit
 compinit
 
@@ -34,6 +35,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export GOPATH="$HOME/.go"
 
 export PATH="$GOPATH/bin:$PYENV_ROOT/bin:$PATH:$HOME/.local/bin:/usr/local/go/bin"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 alias doom="$HOME/.emacs.d/bin/doom"
 

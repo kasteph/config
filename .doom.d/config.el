@@ -28,18 +28,21 @@
       org-startup-with-inline-images t)
 
 (after! org
-  (setq org-agenda-files '("~/Documents/org/todo.org" "~/Documents/org/tasks.org")))
+  (setq org-agenda-files `("~/Documents/org/work.org"
+                           "~/Documents/org/personal.org")))
+
+(after! org
+  (setq org-capture-templates
+      `(("w" "Work" entry (file "~/Documents/org/work.org")
+        "* [ ] %?\n" :prepend t)
+        ("p" "Personal" entry (file "~/Documents/org/personal.org")
+         "* [ ] %?\n" :prepend t)
+        ("n" "Notes" entry (file "~/Documents/org/notes.org")
+         "* %?\n"))
+      ))
 
 (use-package! websocket
     :after org-roam)
-
-(use-package! org-roam-ui
-    :after org-roam
-    :config
-    (setq org-roam-ui-sync-theme t
-	  org-roam-ui-follow t
-	  org-roam-ui-update-on-save t
-	  org-roam-ui-open-on-start t))
 
 
 ;; roam-org
@@ -72,6 +75,14 @@
 - source :: ${ref}"
            :unnarrowed t)))
   (set-company-backend! 'org-mode '(company-capf)))
+
+(use-package! org-roam-ui
+    :after org-roam
+    :config
+    (setq org-roam-ui-sync-theme t
+	  org-roam-ui-follow t
+	  org-roam-ui-update-on-save t
+	  org-roam-ui-open-on-start t))
 
 (use-package! org-roam-bibtex
   :after (org-roam)
@@ -259,6 +270,8 @@
 (global-set-key ">" 'my-indent-region)
 (global-set-key "<" 'my-unindent-region)
 
+(add-to-list 'load-path (concat (getenv "GOPATH")  "/pkg/mod/golang.org/x/lint@v0.0.0-20210508222113-6edffad5e616/misc/emacs/"))
+(require 'golint)
 ;; (use-package composite
 ;;   :defer t
 ;;   :init
